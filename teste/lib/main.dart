@@ -1,5 +1,8 @@
+// ignore_for_file: use_key_in_widget_constructors, unused_import
+
 import 'package:flutter/material.dart';
 import 'loginScreen.dart';
+import 'medRegister.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'TiMed Login Page',
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      //  home: LoginScreen(),
+      home: MedRegister(),
     );
   }
 }
