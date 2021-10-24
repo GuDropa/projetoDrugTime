@@ -1,5 +1,14 @@
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use, avoid_print, use_key_in_widget_constructors, sized_box_for_whitespace, file_names, duplicate_ignore
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'homeScreen.dart';
+
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -135,13 +144,22 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget buildLoginBtn() {
+  Widget buildLoginBtn(BuildContext context) {
     return Container(
         padding: EdgeInsets.symmetric(vertical: 25),
         width: double.infinity,
         child: RaisedButton(
           elevation: 5,
-          onPressed: () => print('Login Pressionado'),
+          onPressed: () => {
+            Navigator.push(context,
+              MaterialPageRoute(
+                builder: (_) => HomeScreen(
+                  email: 'droponcio@gmail.com',
+                  password: 'eopae'  
+                ),
+              ),
+            ),
+          },
           padding: EdgeInsets.all(15),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -222,7 +240,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       buildPassword(),
                       buildForgotPassBtn(),
                       buildRememberCb(),
-                      buildLoginBtn(),
+                      buildLoginBtn(context),
                       buildSignUpBtn(),
                     ],
                   ),
