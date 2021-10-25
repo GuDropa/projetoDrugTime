@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'TiMed Login Page',
       debugShowCheckedModeBanner: false,
-      home: MedRegister(),
+      home: LoginScreen(),
+      // home: RegisterScreen(),
+      // home: MedRegister(),
       routes: {
           // AppRoutes.HOME: (_) => RemedioList(),
           // AppRoutes.REMEDIO_FORM: (_) => RemedioForm(),
