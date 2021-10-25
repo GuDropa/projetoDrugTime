@@ -9,7 +9,7 @@ import 'profileScreen.dart';
 import 'package:teste/views/medList.dart';
 import 'views/loginScreen.dart';
 import 'views/medRegister.dart';
-import 'package:provider/provider.dart';
+import 'package:teste/medRegister.dart';
 
 void main() {
   runApp(MyApp());
