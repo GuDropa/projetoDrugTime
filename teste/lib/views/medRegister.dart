@@ -3,6 +3,8 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
+import 'homeScreen.dart';
+
 class MedRegister extends StatefulWidget {
   
   @override
@@ -31,6 +33,7 @@ class _MedRegisterState extends State<MedRegister> {
   //   }
   // }
   String? _selectedTime;
+  String? _selectedTime2;
  
   // We don't need to pass a context to the _show() function
   // You can safety use context as below
@@ -54,7 +57,29 @@ class _MedRegisterState extends State<MedRegister> {
       });
     }
   }
+ Future<void> _show2() async {
+    final TimeOfDay? result =
+        await showTimePicker(
+          context: context,
+          initialTime: TimeOfDay(hour: 00 , minute: 15),
+          initialEntryMode: TimePickerEntryMode.input,
+          builder: (context, childWidget) {
+          return MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                  // Using 24-Hour format
+                  alwaysUse24HourFormat: true),
+              // If you want 12-Hour format, just change alwaysUse24HourFormat to false or remove all the builder argument
+              child: childWidget!);
+}
+          );
+    if (result != null) {
+      setState(() {
+        _selectedTime2 = result.format(context);
+      });
+    }
+  }
   
+
   Future<void> zeraHorario() async {
     if(_selectedTime != null){
       setState((){
@@ -128,6 +153,7 @@ class _MedRegisterState extends State<MedRegister> {
       },
     );
   }
+  
   Widget buildMedTime() {
     return Container(
         padding: EdgeInsets.symmetric(vertical: 25),
@@ -145,22 +171,96 @@ class _MedRegisterState extends State<MedRegister> {
             ),
             // const SizedBox(width:20),
             const SizedBox(width:20),
-            CircleAvatar(
-                radius: 20,
-                backgroundColor: Colors.red,
-                child: IconButton(
-                  icon: Icon(
-                    Icons.close,
-                    color: Colors.white,
-                  ),
-                  onPressed: zeraHorario,
-                ),
-              ),
+            
           ],
         )
-    );
-        
+    ); 
   }
+
+
+  String? _dropDownValue2;
+  Widget buildAlarm() {
+    return DropdownButton(
+      hint: _dropDownValue2 == null
+          ? Text('Alarme a cada')
+          : Text(_dropDownValue2.toString(),
+              style: TextStyle(fontSize: 16,color: Colors.white),
+            ),
+      isExpanded: true,
+      iconSize: 30.0,
+      style: TextStyle(color: Colors.white),
+      dropdownColor: Colors.blue,
+      items: ['5 minutos', '10 minutos', '15minutos', '20 minutos', '30 minutos'].map(
+        (val) {
+          return DropdownMenuItem<String>(
+            value: val,
+            child: Text(val),
+          );
+        },
+      ).toList(),
+      onChanged: (val) {
+        setState(
+          () {
+            _dropDownValue2 = val.toString();
+          },
+        );
+      },
+    );
+  }
+
+  Widget buildBtns() {
+    return Container(
+        padding: EdgeInsets.symmetric(vertical: 25),
+        width: 200,
+        child: Row(
+          mainAxisAlignment:MainAxisAlignment.spaceBetween,
+          children: [RaisedButton(
+          elevation: 5,
+          onPressed: () => {
+          },
+          padding: EdgeInsets.all(20),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          color: Colors.white,
+          child: Text(
+            'Cadastrar',
+            style: TextStyle(
+              color: Color(0xff7e84b3),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        const SizedBox(width:20),
+        RaisedButton(
+
+          elevation: 5,
+          onPressed: () => {
+            Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => (HomeScreen()),
+                  ),
+                )
+          },
+          padding: EdgeInsets.all(21),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          color: Colors.red,
+          child: Text(
+            'Cancelar',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              
+            ),
+          ),
+        )]
+        ),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -191,6 +291,7 @@ class _MedRegisterState extends State<MedRegister> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+
                       Text(
                         'Cadastrar Remédio',
                         style: TextStyle(
@@ -201,7 +302,7 @@ class _MedRegisterState extends State<MedRegister> {
                       ),
                       SizedBox(height: 50),
                       buildMedName(),
-                      SizedBox(height: 20),
+                      SizedBox(height: 40),
                       Container(
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -211,19 +312,31 @@ class _MedRegisterState extends State<MedRegister> {
                           fontSize: 16,
                           fontWeight: FontWeight.bold,),
                       )),
-                      buildDose(),
-                      buildMedTime(),
                       
+                      buildDose(),
+                      SizedBox(height: 20),
+                      buildMedTime(),
+                      SizedBox(height: 20),
+                      Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                          "Alarme",
+                          style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,),
+                      )),
+
+                      buildAlarm(),
+                      buildBtns(),
                     ],
                   ),
-
                 ),
               )
             ],
           ),
         ),
       ),
-      
     );
   }
 }

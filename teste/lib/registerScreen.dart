@@ -9,7 +9,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'homeScreen.dart';
+import 'views/homeScreen.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
