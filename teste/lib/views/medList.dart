@@ -2,7 +2,6 @@ import 'package:teste/components/remedio_tile.dart';
 import 'package:teste/routes/app_routes.dart';
 import 'package:teste/data/dummy_remedios.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:teste/provider/remedios.dart';
 
 class RemedioList extends StatefulWidget {
@@ -13,7 +12,7 @@ class RemedioList extends StatefulWidget {
 class _RemedioListState extends State<RemedioList> {
   @override
   Widget build(BuildContext context) {
-    final remedios= {...DUMMY_REMEDIOS};
+    final remedios = {...DUMMY_REMEDIOS};
 
     return Scaffold(
       appBar: AppBar(
@@ -21,9 +20,7 @@ class _RemedioListState extends State<RemedioList> {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              Navigator.of(context).pushNamed(
-                  AppRoutes.REMEDIO_FORM
-                );
+              Navigator.of(context).pushNamed(AppRoutes.REMEDIO_FORM);
             },
           )
         ],
