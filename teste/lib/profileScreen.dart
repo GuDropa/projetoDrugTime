@@ -9,6 +9,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:teste/registerScreen.dart';
 import 'homeScreen.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -114,8 +115,7 @@ class _ProfileScreen extends State<ProfileScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) =>
-                    HomeScreen(email: 'droponcio@gmail.com', password: 'eopae'),
+                builder: (_) => RegisterScreen(),
               ),
             ),
           },
@@ -139,28 +139,21 @@ class _ProfileScreen extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff7e84b3),
-        title: Text('TiMed - Perfil do Usuário'),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.person,
-              color: Colors.white,
-            ),
-            onPressed: () => showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                      title: Text("Ola Carinhas!"),
-                      content:
-                          Text("Botão para configurar horario de remédios"),
-                      actions: <Widget>[
-                        TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text('Fechar eu!'))
-                      ]);
-                }),
-          )
+          /* IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+              onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    ),
+                  })
+        */
         ],
+        title: Text('TiMed - Perfil do Usuário'),
       ),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
