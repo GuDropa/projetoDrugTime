@@ -2,6 +2,10 @@
 import 'package:teste/routes/app_routes.dart';
 import 'package:teste/views/medForm.dart';
 import 'package:flutter/material.dart';
+import 'loginScreen.dart';
+import 'medRegister.dart';
+import 'registerScreen.dart';
+import 'profileScreen.dart';
 import 'package:teste/views/medList.dart';
 import 'views/loginScreen.dart';
 import 'views/medRegister.dart';
@@ -21,9 +25,9 @@ class MyApp extends StatelessWidget {
       // home: RegisterScreen(),
       // home: MedRegister(),
       routes: {
-          // AppRoutes.HOME: (_) => RemedioList(),
-          // AppRoutes.REMEDIO_FORM: (_) => RemedioForm(),
-        },
+        // AppRoutes.HOME: (_) => RemedioList(),
+        // AppRoutes.REMEDIO_FORM: (_) => RemedioForm(),
+      },
     );
   }
 }

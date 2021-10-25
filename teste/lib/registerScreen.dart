@@ -247,8 +247,6 @@ class _RegisterScreen extends State<RegisterScreen> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                      Color(0xff5159af),
-                      Color(0xff7e84b3),
                       Color(0xff9ea3d0),
                       Color(0xffbcc5ed),
                       Color(0xffc5c7e1),
