@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
+import 'homeScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -138,13 +139,22 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget buildLoginBtn() {
+  Widget buildLoginBtn(BuildContext context) {
     return Container(
         padding: EdgeInsets.symmetric(vertical: 25),
         width: double.infinity,
         child: RaisedButton(
           elevation: 5,
-          onPressed: () => print('Login Pressionado'),
+          onPressed: () => {
+            Navigator.push(context,
+              MaterialPageRoute(
+                builder: (_) => HomeScreen(
+                  email: 'droponcio@gmail.com',
+                  password: 'eopae'  
+                ),
+              ),
+            ),
+          },
           padding: EdgeInsets.all(15),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -225,7 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       buildPassword(),
                       buildForgotPassBtn(),
                       buildRememberCb(),
-                      buildLoginBtn(),
+                      buildLoginBtn(context),
                       buildSignUpBtn(),
                     ],
                   ),

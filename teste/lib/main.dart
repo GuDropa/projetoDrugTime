@@ -2,10 +2,8 @@
 import 'package:teste/routes/app_routes.dart';
 import 'package:teste/views/medForm.dart';
 import 'package:flutter/material.dart';
-import 'loginScreen.dart';
-import 'medRegister.dart';
-import 'registerScreen.dart';
-import 'profileScreen.dart';
+import 'views/registerScreen.dart';
+import 'views/profileScreen.dart';
 import 'package:teste/views/medList.dart';
 import 'views/loginScreen.dart';
 import 'views/medRegister.dart';
