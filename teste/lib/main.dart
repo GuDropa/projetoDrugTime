@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'loginScreen.dart';
 import 'medRegister.dart';
 import 'registerScreen.dart';
+import 'profileScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'TiMed Login Page',
       debugShowCheckedModeBanner: false,
       //home: LoginScreen(),
-      home: RegisterScreen(),
+      home: ProfileScreen(),
     );
   }
 }
