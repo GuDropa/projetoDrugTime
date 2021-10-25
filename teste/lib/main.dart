@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'TiMed Login Page',
       debugShowCheckedModeBanner: false,
-      //home: LoginScreen(),
-      home: RegisterScreen(),
+      home: LoginScreen(),
+      // home: RegisterScreen(),
     );
   }
 }
