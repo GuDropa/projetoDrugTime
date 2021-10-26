@@ -1,7 +1,9 @@
 // ignore_for_file: file_names, use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:teste/profileScreen.dart';
+import 'package:teste/components/remedio_tile.dart';
+import 'package:teste/data/dummy_remedios.dart';
+import 'package:teste/views/profileScreen.dart';
 import 'medRegister.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final remedios = {...DUMMY_REMEDIOS};
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,30 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 400,
               width: 400,
               child: ListView.separated(
-                  itemCount: 9,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                        leading: Icon(
-                          Icons.medication_outlined,
-                          size: 60.0,
-                          color: Color(0xff7e84b3),
-                        ),
-                        title: Text('Pill ${index + 1}'),
-                        trailing: IconButton(
-                          icon: Icon(
-                            Icons.edit,
-                            color: Color(0xff7e84b3),
-                          ),
-                          onPressed: () => {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => MedRegister(),
-                              ),
-                            )
-                          },
-                        ));
-                  },
+                  itemBuilder: (ctx, i) => RemedioTile(remedios.values.elementAt(i)),
+                  itemCount: remedios.length,
                   separatorBuilder: (_, __) => Divider(),
                   padding: EdgeInsets.all(12)),
             )

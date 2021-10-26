@@ -9,7 +9,18 @@ const DUMMY_REMEDIOS = {
   ),
   '2' : const Remedio(
     id: '2',
-    name: 'Sla',
+    name: 'Omeprazol',
     hour: TimeOfDay(hour:0,minute:0),
   ),
+  '3' : const Remedio(
+    id: '3',
+    name: 'Niki',
+    hour: TimeOfDay(hour:0,minute:0),
+  ),
+  '4' : const Remedio(
+    id: '4',
+    name: 'Dorflex',
+    hour: TimeOfDay(hour:0,minute:0),
+  ),
+  
 };

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste/views/medRegister.dart';
 import '../models/remedio.dart';
 
 class RemedioTile extends StatelessWidget {
@@ -19,7 +20,16 @@ class RemedioTile extends StatelessWidget {
           children: <Widget>[
             IconButton(
               icon: Icon(Icons.edit),
-              onPressed: () {},
+              onPressed: () {
+                
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => MedRegister(),
+                              ),
+                            );
+                         
+              },
               color: Colors.blue,
             ),
             IconButton(

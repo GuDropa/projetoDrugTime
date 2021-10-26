@@ -1,4 +1,3 @@
-
 // ignore: file_names
 // ignore: file_names
 // ignore: file_names
@@ -8,26 +7,65 @@
 
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print, use_key_in_widget_constructors, sized_box_for_whitespace, file_names, deprecated_member_use
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'views/homeScreen.dart';
+import 'package:teste/views/profileScreen.dart';
 
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreen createState() => _RegisterScreen();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  bool? isRememberMe = false;
+class _RegisterScreen extends State<RegisterScreen> {
+  Widget buildName() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Nome:',
+          style: TextStyle(
+              color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 10),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 6,
+                  offset: Offset(0, 2),
+                )
+              ]),
+          height: 60,
+          child: TextField(
+            keyboardType: TextInputType.text,
+            style: TextStyle(color: Colors.black87), //TextStyle
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14),
+              prefixIcon: Icon(
+                Icons.person,
+                color: Color(0xff7e84b3),
+              ),
+              hintText: 'Andressa Gobbo',
+              hintStyle: TextStyle(color: Colors.black),
+            ),
+          ),
+        )
+      ],
+    );
+  }
 
   Widget buildEmail() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Email',
+          'Email:',
           style: TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
@@ -55,8 +93,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 Icons.email,
                 color: Color(0xff7e84b3),
               ),
-              hintText: 'Email',
-              hintStyle: TextStyle(color: Colors.black38),
+              hintText: 'andressafgdias@gmail.com',
+              hintStyle: TextStyle(color: Colors.black),
             ),
           ),
         )
@@ -69,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Senha',
+          'Senha:',
           style: TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
@@ -97,7 +135,49 @@ class _LoginScreenState extends State<LoginScreen> {
                 Icons.lock,
                 color: Color(0xff7e84b3),
               ),
-              hintText: 'Senha',
+              hintText: 'Digite aqui uma senha se deseja atualizar a sua',
+              hintStyle: TextStyle(color: Colors.black87),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget buildConfirmPassword() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Confirme sua senha:',
+          style: TextStyle(
+              color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 10),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 6,
+                  offset: Offset(0, 2),
+                )
+              ]),
+          height: 60,
+          child: TextField(
+            obscureText: true,
+            style: TextStyle(color: Colors.black87), //TextStyle
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14),
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Color(0xff7e84b3),
+              ),
+              hintText: 'Confirme a senha digitada',
               hintStyle: TextStyle(color: Colors.black38),
             ),
           ),
@@ -106,61 +186,17 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget buildForgotPassBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: FlatButton(
-        onPressed: () => print("Esqueci minha senha pressionado"),
-        padding: EdgeInsets.only(right: 0),
-        child: Text(
-          'Esqueci minha senha',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildRememberCb() {
-    return Container(
-      height: 20,
-      child: Row(children: <Widget>[
-        Theme(
-          data: ThemeData(unselectedWidgetColor: Colors.white),
-          child: Checkbox(
-            value: isRememberMe,
-            checkColor: Colors.indigo.shade400,
-            activeColor: Colors.white,
-            onChanged: (value) {
-              setState(() {
-                isRememberMe = value;
-              });
-            },
-          ),
-        ),
-        Text(
-          'Lembrar minha senha',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        )
-      ]),
-    );
-  }
-
-  Widget buildLoginBtn(BuildContext context) {
+  Widget buildCreateBtn(BuildContext context) {
     return Container(
         padding: EdgeInsets.symmetric(vertical: 25),
         width: double.infinity,
         child: RaisedButton(
           elevation: 5,
           onPressed: () => {
-            Navigator.push(context,
+            Navigator.push(
+              context,
               MaterialPageRoute(
-                builder: (_) => HomeScreen(
-                  email: 'droponcio@gmail.com',
-                  password: 'eopae'  
-                ),
+                builder: (_) => ProfileScreen(),
               ),
             ),
           },
@@ -169,7 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           color: Colors.white,
           child: Text(
-            'ENTRAR',
+            'SALVAR',
             style: TextStyle(
               color: Color(0xff7e84b3),
               fontSize: 18,
@@ -179,22 +215,17 @@ class _LoginScreenState extends State<LoginScreen> {
         ));
   }
 
-  Widget buildSignUpBtn() {
+  Widget buildCancelBtn() {
     return GestureDetector(
-      onTap: () => print("Registre-se pressionado"),
+      onTap: () => print("Cancelar pressionado"),
       child: RichText(
         text: TextSpan(children: [
           TextSpan(
-              text: 'Não possui uma conta? ',
+              text: 'Cancelar',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                   fontWeight: FontWeight.w500)),
-          TextSpan(
-            text: 'Registre-se!',
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
-          ),
         ]),
       ),
     );
@@ -216,8 +247,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                      Color(0xff5159af),
-                      Color(0xff7e84b3),
                       Color(0xff9ea3d0),
                       Color(0xffbcc5ed),
                       Color(0xffc5c7e1),
@@ -226,26 +255,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 25,
-                    vertical: 120,
+                    vertical: 100,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Login',
+                        'Editar Usuário',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 40,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 50),
+                      SizedBox(height: 30),
+                      buildName(),
+                      SizedBox(height: 20),
                       buildEmail(),
                       SizedBox(height: 20),
                       buildPassword(),
-                      buildForgotPassBtn(),
-                      buildRememberCb(),
-                      buildLoginBtn(context),
-                      buildSignUpBtn(),
+                      SizedBox(height: 20),
+                      buildConfirmPassword(),
+                      buildCreateBtn(context),
+                      buildCancelBtn(),
                     ],
                   ),
                 ),

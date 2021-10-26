@@ -9,8 +9,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:teste/registerScreen.dart';
-import 'homeScreen.dart';
+import 'package:teste/views/registerScreen.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';

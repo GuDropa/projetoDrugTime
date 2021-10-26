@@ -236,12 +236,16 @@ class _MedRegisterState extends State<MedRegister> {
 
           elevation: 5,
           onPressed: () => {
-            Navigator.push(
+            
+               Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (_) => (HomeScreen()),
                   ),
-                )
+                ),
+             
+            
+           
           },
           padding: EdgeInsets.all(21),
           shape:
